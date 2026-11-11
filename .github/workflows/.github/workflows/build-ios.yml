@@ -1,0 +1,41 @@
+name: Build KULON-FxL iOS
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        run: xcodegen generate --spec ios/project.yml
+
+      - name: Build app
+        run: |
+          xcodebuild \
+            -project KULONFxL.xcodeproj \
+            -scheme KULONFxL \
+            -configuration Release \
+            -sdk iphoneos \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            build
+
+      - name: Package unsigned IPA
+        run: |
+          mkdir Payload
+          cp -R build/Build/Products/Release-iphoneos/KULON-FxL.app Payload/
+          zip -r KULON-FxL-unsigned.ipa Payload
+
+      - name: Upload IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: KULON-FxL-unsigned-IPA
+          path: KULON-FxL-unsigned.ipa
