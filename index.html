@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KULON-FxL Micro</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:#171421;font-family:Arial;color:#302641}
+.menu{width:255px;background:#fff;border:1px solid #d9c9ff;border-radius:10px;overflow:hidden;box-shadow:0 10px 35px #0007}
+.header{height:48px;padding:7px 10px;background:linear-gradient(110deg,#7545cf,#c5a5ff);color:white;display:flex;justify-content:space-between;align-items:center}
+.brand{font-size:13px;font-weight:800}.sub{font-size:8px;letter-spacing:1px;margin-top:3px}
+.version{font-size:9px}.main{display:grid;grid-template-columns:66px 1fr;min-height:185px}
+.sidebar{background:#f5f0ff;padding:7px 4px}
+.tab{width:100%;padding:8px 3px;margin-bottom:4px;border:0;border-radius:5px;background:none;color:#766b8c;font-size:9px;cursor:pointer}
+.tab.active{background:linear-gradient(110deg,#7545cf,#a77be9);color:white}
+.content{padding:10px 9px;min-width:0}
+.section{font-size:10px;font-weight:bold;color:#7545cf;margin-bottom:10px}
+.item{display:flex;justify-content:space-between;align-items:center;gap:5px;margin:10px 0;font-size:9px}
+.switch{position:relative;width:25px;height:14px;flex-shrink:0}
+.switch input{display:none}
+.track{position:absolute;inset:0;background:#ddd5e9;border-radius:15px;cursor:pointer}
+.track:after{content:"";position:absolute;width:10px;height:10px;left:2px;top:2px;background:white;border-radius:50%;transition:.2s}
+.switch input:checked+.track{background:#9565df}
+.switch input:checked+.track:after{transform:translateX(11px)}
+input[type=range]{width:75px;accent-color:#8956d5}
+select{width:75px;border:1px solid #e5d9f5;border-radius:4px;padding:3px;font-size:9px}
+.hidden{display:none}
+.footer{text-align:center;padding:6px;background:#faf8ff;color:#a194b8;font-size:8px}
+.note{font-size:8px;color:#9b91aa;line-height:1.4;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="menu">
+<header class="header">
+<div><div class="brand">♛ kulon-FxL</div><div class="sub">PREMIUM EDITION</div></div>
+<div class="version">v1.0</div>
+</header>
+<div class="main">
+<nav class="sidebar">
+<button class="tab active" data-tab="visual">Visual</button>
+<button class="tab" data-tab="aim">Aim</button>
+<button class="tab" data-tab="settings">Settings</button>
+<button class="tab" data-tab="misc">Misc</button>
+<button class="tab" data-tab="info">Info</button>
+</nav>
+<main class="content">
+
+<section class="page" id="visual">
+<div class="section">VISUAL</div>
+<div class="item">WH <label class="switch"><input type="checkbox"><span class="track"></span></label></div>
+<div class="item">ESP <label class="switch"><input type="checkbox"><span class="track"></span></label></div>
+<div class="item">Player Box <label class="switch"><input type="checkbox"><span class="track"></span></label></div>
+<div class="item">Player Names <label class="switch"><input type="checkbox"><span class="track"></span></label></div>
+<div class="item">Line Display <label class="switch"><input type="checkbox"><span class="track"></span></label></div>
+<div class="item">ESP Color <input type="color" value="#9565df"></div>
+</section>
+
+<section class="page hidden" id="aim">
+<div class="section">AIM SETTINGS</div>
+<div class="item">Aimbot <label class="switch"><input type="checkbox"><span class="track"></span></label></div>
+<div class="item">Aim FOV <input type="range" min="1" max="180" value="60"></div>
+<div class="item">Smoothness <input type="range" min="1" max="100" value="50"></div>
+<div class="item">Aim Distance <input type="range" min="1" max="100" value="50"></div>
+<div class="item">Target <select><option>Head</option><option>Body</option><option>Nearest</option></select></div>
+<div class="item">Draw FOV <label class="switch"><input type="checkbox"><span class="track"></span></label></div>
+</section>
+
+<section class="page hidden" id="settings">
+<div class="section">SETTINGS</div>
+<div class="item">Menu Sounds <label class="switch"><input type="checkbox"><span class="track"></span></label></div>
+<div class="item">Animation <label class="switch"><input type="checkbox" checked><span class="track"></span></label></div>
+<div class="item">Menu Opacity <input type="range" min="30" max="100" value="100"></div>
+<div class="item">Menu Scale <input type="range" min="80" max="120" value="100"></div>
+<div class="item">Theme <select><option>Violet</option><option>Light</option><option>Dark</option></select></div>
+</section>
+
+<section class="page hidden" id="misc">
+<div class="section">MISC</div>
+<div class="item">FPS Display <label class="switch"><input type="checkbox"><span class="track"></span></label></div>
+<div class="item">Ping Display <label class="switch"><input type="checkbox"><span class="track"></span></label></div>
+<div class="item">Compact Mode <label class="switch"><input type="checkbox" checked><span class="track"></span></label></div>
+<div class="item">Practice Timer <label class="switch"><input type="checkbox"><span class="track"></span></label></div>
+</section>
+
+<section class="page hidden" id="info">
+<div class="section">INFORMATION</div>
+<div class="item">Project <b>KULON-FxL</b></div>
+<div class="item">Version <b>1.0</b></div>
+<div class="item">Interface <b>Micro</b></div>
+<div class="note">Standalone interface demo. Does not connect to or modify the game.</div>
+</section>
+
+</main>
+</div>
+<footer class="footer">KULON-FxL · MICRO UI</footer>
+</div>
+<script>
+document.querySelectorAll(".tab").forEach(tab=>{
+tab.addEventListener("click",()=>{
+document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+document.querySelectorAll(".page").forEach(x=>x.classList.add("hidden"));
+tab.classList.add("active");
+document.getElementById(tab.dataset.tab).classList.remove("hidden");
+});
+});
+document.querySelectorAll(".menu input,.menu select").forEach((el,i)=>{
+const key="kulon_demo_"+i;
+const old=localStorage.getItem(key);
+if(old!==null){
+if(el.type==="checkbox")el.checked=old==="true";
+else el.value=old;
+}
+el.addEventListener("change",()=>{
+localStorage.setItem(key,el.type==="checkbox"?el.checked:el.value);
+});
+});
+</script>
+</body>
+</html>
