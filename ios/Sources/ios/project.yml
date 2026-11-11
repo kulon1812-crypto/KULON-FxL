@@ -1,0 +1,27 @@
+
+name: KULONFxL
+
+options:
+  bundleIdPrefix: com.kulon
+  deploymentTarget:
+    iOS: "15.0"
+
+targets:
+  KULONFxL:
+    type: application
+    platform: iOS
+
+    sources:
+      - Sources
+
+    resources:
+      - path: ../index.html
+
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.kulon.fxl
+        PRODUCT_NAME: KULON-FxL
+        INFOPLIST_KEY_CFBundleDisplayName: KULON-FxL
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        IPHONEOS_DEPLOYMENT_TARGET: "15.0"
