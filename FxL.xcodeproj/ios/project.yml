@@ -1,0 +1,21 @@
+name: FxL
+
+options:
+  bundleIdPrefix: dev.kulon
+  deploymentTarget:
+    iOS: "17.0"
+
+targets:
+  FxL:
+    type: application
+    platform: iOS
+    sources:
+      - path: ../FxL
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: dev.kulon.fxl
+        PRODUCT_NAME: FxL
+        SWIFT_VERSION: 5.0
+        INFOPLIST_FILE: ../FxL/Info.plist
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGNING_ALLOWED: NO
